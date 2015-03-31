@@ -1,9 +1,13 @@
 [
     {
         "annotation": {
-            "width": 31,
-            "dx": 10,
-            "dy": -5
+            "breakpoints": {
+                "1": {
+                    "width": 140,
+                    "dx": 20,
+                    "dy": -20
+                }
+            }
         },
         "Name": "345 Harrison Street", 
         "Neighborhood": "South End", 
@@ -25,9 +29,13 @@
     }, 
     {
         "annotation": {
-            "width": 31,
-            "dx": 10,
-            "dy": -5
+            "breakpoints": {
+                "1": {
+                    "width": 90,
+                    "dx": 30,
+                    "dy": -5
+                }
+            }
         },
         "Name": "275 Albany St.", 
         "Neighborhood": "South End", 
@@ -49,9 +57,13 @@
     }, 
     {
         "annotation": {
-            "width": 31,
-            "dx": 10,
-            "dy": -5
+            "breakpoints": {
+                "1": {
+                    "width": 75,
+                    "dx": 60,
+                    "dy": -50
+                }
+            }
         },
         "Name": "Parcel 24", 
         "Neighborhood": "Chinatown", 
@@ -73,9 +85,14 @@
     }, 
     {
         "annotation": {
-            "width": 24,
-            "dx": -8,
-            "dy": -5
+            "breakpoints": {
+                "1": {
+                    "flip": true,
+                    "width": 80,
+                    "dx": -15,
+                    "dy": -20
+                }
+            }
         },
         "Name": "80 East Berkeley St.", 
         "Neighborhood": "South End", 
@@ -97,9 +114,14 @@
     }, 
     {
         "annotation": {
-            "width": 25,
-            "dx": -20,
-            "dy": -6
+            "breakpoints": {
+                "1": {
+                    "flip": true,
+                    "width": 70,
+                    "dx": -50,
+                    "dy": -60
+                }
+            }
         },
         "Name": "45 Stuart St.", 
         "Neighborhood": "Downtown", 

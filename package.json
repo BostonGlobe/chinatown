@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "d3": "^3.5.5",
-    "dsv-loader": "^1.0.0"
+    "dsv-loader": "^1.0.0",
+    "topojson": "^1.6.18"
   }
 }

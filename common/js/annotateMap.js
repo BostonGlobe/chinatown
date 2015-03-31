@@ -1,13 +1,34 @@
 var d3 = require('d3');
 
+function log(s) {
+	console.log(JSON.stringify(s, null, 4));
+}
+
 module.exports = {
+
+	getSettings(annotation, width) {
+
+		var match = _.chain(annotation.breakpoints)
+			.keys()
+			.map(d => +d)
+			.filter(d => d <= width)
+			.sortBy()
+			.reverse()
+			.first()
+			.value();
+
+		return annotation.breakpoints[match];
+	},
 
 	draw(opts) {
 
 		this.opts = opts;
 
 		// clear guides
-		opts.$annotationGuides.empty();
+		$(opts.annotationGuidesSelector).empty();
+
+		// clear texts
+		$(opts.annotationTextsSelector).empty();
 
 		// resize guides
 		this.svg = d3.select(opts.annotationGuidesSelector)
@@ -21,6 +42,9 @@ module.exports = {
 		this.drawLines();
 
 		this.drawText();
+
+		this.drawMapLabels();
+
 	},
 
 	drawCircles() {
@@ -55,6 +79,8 @@ module.exports = {
 			.range([this.opts.height, 0])
 			.domain([this.opts.bounds.S, this.opts.bounds.N]);
 
+		var self = this;
+
 		this.svg.append('g')
 			.attr('class', 'lines')
 			.selectAll('line')
@@ -62,10 +88,42 @@ module.exports = {
 			.enter().append('line')
 			.attr({
 				x1: d => x(d.Longitude),
-				x2: d => x(d.Longitude) + x.range()[1]*d.annotation.dx/100,
+				x2: function(d) {
+					var settings = self.getSettings(d.annotation, self.opts.width);
+					return x(d.Longitude) + settings.dx;
+				},
 				y1: d => y(d.Latitude),
 				y2: d => y(d.Latitude)
 			});
+
+	},
+
+	drawMapLabels() {
+
+		var x = d3.scale.linear()
+			.range([0, 100])
+			.domain([this.opts.bounds.W, this.opts.bounds.E]);
+
+		var y = d3.scale.linear()
+			.range([100, 0])
+			.domain([this.opts.bounds.S, this.opts.bounds.N]);
+
+		var self = this;
+
+		d3.select(this.opts.mapLabelsSelector)
+			.selectAll('div')
+			.data(this.opts.mapLabels)
+			.enter().append('div')
+			.attr({
+				'class': 'map-label'
+			})
+			.style({
+				top: d => `${y(d.lat)}%`,
+				left: d => `${x(d.lng)}%`
+			})
+			.append('span')
+			.attr('class', 'label')
+			.html(d => d.html);
 
 	},
 
@@ -79,19 +137,35 @@ module.exports = {
 			.range([100, 0])
 			.domain([this.opts.bounds.S, this.opts.bounds.N]);
 
+		var self = this;
+
 		d3.select(this.opts.annotationTextsSelector)
 			.selectAll('div')
 			.data(this.opts.data)
 			.enter().append('div')
 			.attr('class', 'annotation')
 			.style({
-				'text-align': d => d.annotation.dx > 0 ? 'left' : 'right',
-				width: d => `${d.annotation.width}%`,
-				top: d => `${y(d.Latitude) + d.annotation.dy}%`,
-				left: d => `${x(d.Longitude) + d.annotation.dx - (d.annotation.dx > 0 ? 0 : d.annotation.width)}%`,
+				'text-align': function(d) {
+					var settings = self.getSettings(d.annotation, self.opts.width);
+					return settings.flip ? 'right' : 'left';
+				},
+				width: function(d) {
+					var settings = self.getSettings(d.annotation, self.opts.width);
+					return `${settings.width}px`;
+				},
+				top: d => `${y(d.Latitude)}%`,
+				left: d => `${x(d.Longitude)}%`,
+				'margin-left': function(d) {
+					var settings = self.getSettings(d.annotation, self.opts.width);
+					return `${settings.dx - (settings.flip ? settings.width : 0)}px`;
+				},
+				'margin-top': function(d) {
+					var settings = self.getSettings(d.annotation, self.opts.width);
+					return `${settings.dy}px`;
+				}
 			})
 			.append('span')
-			.text(d => d.comment);
+			.text(self.opts.text);
 	}
 
 };
