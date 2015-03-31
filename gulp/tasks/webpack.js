@@ -38,7 +38,9 @@ gulp.task('webpack', function() {
 				loaders: [
 					{ test: /\.json$/, loader: 'json-loader' },
 					{ test: /\.jsx$/, loader: 'jsx-loader' },
-					{ test: /\.css$/, loader: 'style-loader!css-loader' }
+					{ test: /\.css$/, loader: 'style-loader!css-loader' },
+					{ test: /\.csv?$/, loader: 'dsv-loader' },
+					{ test: /\.js$/, exclude: /node_modules|templates\.js/, loader: 'babel-loader'}
 				]
 			},
 			plugins: plugins,

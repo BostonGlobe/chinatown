@@ -10,3 +10,4 @@ data/chinatown_files
 data/input/downloaded
 parts/globe
 graphics/graphic/js/templates/templates.js
+graphics/map/js/templates/templates.js
