@@ -1,0 +1,161 @@
+[
+    {
+        "name": "345 Harrison Ave.",
+        "text": "600 residential units and street-level retail",
+        "annotation": {
+            "breakpoints": {
+                "1": {
+                    "flip": true,
+                    "width": 115,
+                    "dx": -10,
+                    "dy": -45
+                },
+                "380": {
+                    "flip": true,
+                    "width": 115,
+                    "dx": -40,
+                    "dy": -45
+                },
+                "500": {
+                    "flip": true,
+                    "width": 115,
+                    "dx": -80,
+                    "dy": -45
+                }
+            }
+        },
+        "Longitude": "-71.064441", 
+        "Latitude": "42.345254"
+    }, 
+    {
+        "name": "275 Albany St.",
+        "text": "Apartments, hotel at former Teradyne parking lot",
+        "annotation": {
+            "breakpoints": {
+                "1": {
+                    "width": 90,
+                    "dx": 30,
+                    "dy": -10
+                },
+                "380": {
+                    "width": 110,
+                    "dx": 40,
+                    "dy": -10
+                },
+                "500": {
+                    "width": 110,
+                    "dx": 40,
+                    "dy": -10
+                }
+            }
+        },
+        "Longitude": "-71.062665", 
+        "Latitude": "42.343825"
+    }, 
+    {
+        "name": "Parcel 24",
+        "text": "One Greenway, 363 units of mixed-income housing",
+        "annotation": {
+            "breakpoints": {
+                "1": {
+                    "width": 70,
+                    "dx": 70,
+                    "dy": -80
+                },
+                "380": {
+                    "width": 70,
+                    "dx": 110,
+                    "dy": -80
+                },
+                "500": {
+                    "width": 70,
+                    "dx": 140,
+                    "dy": -80
+                }
+            }
+        },
+        "Longitude": "-71.062927", 
+        "Latitude": "42.351172" 
+    }, 
+    {
+        "name": "80 East Berkeley St.",
+        "text": "11-story retail and office space",
+        "annotation": {
+            "breakpoints": {
+                "1": {
+                    "flip": true,
+                    "width": 80,
+                    "dx": -15,
+                    "dy": -7
+                },
+                "380": {
+                    "flip": true,
+                    "width": 80,
+                    "dx": -25,
+                    "dy": -7
+                },
+                "500": {
+                    "flip": true,
+                    "width": 80,
+                    "dx": -45,
+                    "dy": -7
+                }
+            }
+        },
+        "Longitude": "-71.066574", 
+        "Latitude": "42.344381"
+    }, 
+    {
+        "name": "45 Stuart St.",
+        "text": "29 stories, 404 residential units",
+        "annotation": {
+            "breakpoints": {
+                "1": {
+                    "flip": true,
+                    "width": 70,
+                    "dx": -60,
+                    "dy": -60
+                },
+                "380": {
+                    "flip": true,
+                    "width": 70,
+                    "dx": -80,
+                    "dy": -60
+                },
+                "500": {
+                    "flip": true,
+                    "width": 90,
+                    "dx": -90,
+                    "dy": -30
+                }
+            }
+        },
+        "Longitude": "-71.063987", 
+        "Latitude": "42.351272"
+    }, 
+    {
+        "name": "Ink Block",
+        "text": "Whole Foods Market, 315 apartments, retail",
+        "annotation": {
+            "breakpoints": {
+                "1": {
+                    "width": 100,
+                    "dx": 40,
+                    "dy": -60
+                },
+                "380": {
+                    "width": 100,
+                    "dx": 70,
+                    "dy": -60
+                },
+                "500": {
+                    "width": 120,
+                    "dx": 100,
+                    "dy": -40
+                }
+            }
+        },
+        "Longitude": "-71.062636", 
+        "Latitude": "42.345379"
+    }
+]
