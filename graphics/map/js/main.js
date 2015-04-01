@@ -10,6 +10,7 @@ var annotateMap = require('../../../common/js/annotateMap.js');
 
 var d3 = require('d3');
 var topojson = require('topojson');
+var latLngDistance = require('../../../common/js/latLngDistance.js');
 
 function log(s) {
 	console.log(JSON.stringify(s, null, 4));
@@ -64,6 +65,11 @@ function resize() {
 			'class': 'CSCNC'
 		});
 
+	// get the distance in feet
+	var distanceInFeet = Math.floor(latLngDistance.getDistanceFromLatLonInKm(bounds.S, bounds.W, bounds.S, bounds.E) * 3280.84);
+
+	$(`${masterSelector} .map-distance-legend`).width(`${1000*100/distanceInFeet}%`);
+
 	annotateMap.draw({
 		bounds,
 		data: data.filter(d => d.annotation),
@@ -71,7 +77,7 @@ function resize() {
 		height: outerHeight,
 		annotationGuidesSelector: `${masterSelector} .annotation-guides`,
 		annotationTextsSelector: `${masterSelector} .annotation-texts`,
-		text: d => `${d.headline || d.comment}`,
+		text: d => `<span class="name">${d.name}</span><span class="text">${d.text}</span>`,
 		mapLabels: [
 			{
 				lat: 42.356,

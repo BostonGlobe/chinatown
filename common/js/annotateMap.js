@@ -164,8 +164,7 @@ module.exports = {
 					return `${settings.dy}px`;
 				}
 			})
-			.append('span')
-			.text(self.opts.text);
+			.html(self.opts.text);
 	}
 
 };
